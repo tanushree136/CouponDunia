@@ -13,63 +13,63 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 
 public class DBHelper extends SQLiteOpenHelper {
+    
+    private static DBHelper mInstance=null;
+    
+    // *******DataBase Version
+    private static final int DATABASE_VERSION = 1;
+    
+    // *******DataBase Name
+    private static final String DATABASE_NAME = "CouponDuniya";
+    
+    // *******Table Names
+    private static final String TABLE_COUPON_DETAILS = "T_COUPON_DETAILS";
+    private static final String TABLE_COUPON_CATEGORY_DETAIL="T_CATEGORY_DETAILS"; 	
 
-	private static DBHelper mInstance=null;
+    // *******Column names for T_COUPON_DETAILS
+    private static final String TCD_OUTLET_ID = "outlet_id";
+    private static final String TCD_OUTLET_NAME = "outlet_Name";
+    private static final String TCD_NUM_COUPONS = "num_coupons";
+    private static final String TCD_LOGO_URL = "logo_url";
+    private static final String TCD_LATITUDE = "latitude";
+    private static final String TCD_LONGITUDE = "longitude";
+    private static final String TCD_NEIGHBOURHOOD = "neighbourhood";
 	
-	// *******DataBase Version
-	private static final int DATABASE_VERSION = 1;
-	
-	// *******DataBase Name
-	private static final String DATABASE_NAME = "CouponDuniya";
-	 
-	// *******Table Names
-	private static final String TABLE_COUPON_DETAILS = "T_COUPON_DETAILS";
-	private static final String TABLE_COUPON_CATEGORY_DETAIL="T_CATEGORY_DETAILS"; 	
-
-	// *******Column names for T_COUPON_DETAILS
-	private static final String TCD_OUTLET_ID = "outlet_id";
-	private static final String TCD_OUTLET_NAME = "outlet_Name";
-	private static final String TCD_NUM_COUPONS = "num_coupons";
-	private static final String TCD_LOGO_URL = "logo_url";
-	private static final String TCD_LATITUDE = "latitude";
-	private static final String TCD_LONGITUDE = "longitude";
-	private static final String TCD_NEIGHBOURHOOD = "neighbourhood";
-	
-	// *******Column names for T_CATEGORY_DETAILS
-	private static final String TCCD_CATEGORY_ID = "id";
-	private static final String TCCD_CATEGORY = "category";
-	private static final String TCCD_OUTLET_ID = "outlet_id";
-		
-	public static DBHelper getInstance(Context context) {
-		if (mInstance == null) {
-			mInstance = new DBHelper(context);
-		}
-		return mInstance;
+    // *******Column names for T_CATEGORY_DETAILS
+    private static final String TCCD_CATEGORY_ID = "id";
+    private static final String TCCD_CATEGORY = "category";
+    private static final String TCCD_OUTLET_ID = "outlet_id";
+    
+    public static DBHelper getInstance(Context context) {
+    	if (mInstance == null) {
+	    mInstance = new DBHelper(context);
 	}
+	return mInstance;
+    }
 
-	public DBHelper(Context ctx) {
-		super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
-	}
+    public DBHelper(Context ctx) {
+    	super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
+    }
 	
-	@Override
-	public void onCreate(SQLiteDatabase db) {
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+    	
+        Log.d("creating tables..","1");
 
-		Log.d("creating tables..","1");
-
-		// Create script for table_coupon_details
-		db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_COUPON_DETAILS + "("
+	// Create script for table_coupon_details
+	db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_COUPON_DETAILS + "("
                 + TCD_OUTLET_ID + " TEXT PRIMARY KEY,"
                 + TCD_OUTLET_NAME + " TEXT,"
                 + TCD_NUM_COUPONS + " TEXT,"
-				+ TCD_LOGO_URL + " TEXT,"
+		+ TCD_LOGO_URL + " TEXT,"
                 + TCD_NEIGHBOURHOOD + " TEXT,"
                 + TCD_LATITUDE + " TEXT,"
                 + TCD_LONGITUDE + " TEXT )"
                 +";");
-		Log.d("creating..","creating coupon table");
+	Log.d("creating..","creating coupon table");
 		
-		// Create script for table_coupon_category_details
-		db.execSQL("CREATE TABLE IF NOT EXISTS "
+	// Create script for table_coupon_category_details
+	db.execSQL("CREATE TABLE IF NOT EXISTS "
                 + TABLE_COUPON_CATEGORY_DETAIL + "("
                 + TCCD_CATEGORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + TCCD_OUTLET_ID + " TEXT,"
@@ -80,41 +80,41 @@ public class DBHelper extends SQLiteOpenHelper {
                 + TABLE_COUPON_DETAILS
                 +"("+TCD_OUTLET_ID+"));");
 
-		Log.d("creating...","creating category table");
-	}
+	Log.d("creating...","creating category table");
+    }
 
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_COUPON_DETAILS);
-		db.execSQL("DROP TABLE IF EXISTS " + TABLE_COUPON_CATEGORY_DETAIL);
-		onCreate(db);
-	}
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    	db.execSQL("DROP TABLE IF EXISTS " + TABLE_COUPON_DETAILS);
+	db.execSQL("DROP TABLE IF EXISTS " + TABLE_COUPON_CATEGORY_DETAIL);
+	onCreate(db);
+    }
 	
-	// ******************** Coupon Details Table Methods *********************
+    // ******************** Coupon Details Table Methods *********************
 	
-	// Inserting Coupon details in sqlite
-	public Boolean insertCouponDetails(BeanCouponDetails beanCouponDetails) {
-		try {
-			SQLiteDatabase db = this.getWritableDatabase();
-			ContentValues requestDlsValues = new ContentValues();
-			requestDlsValues.put(TCD_OUTLET_ID, beanCouponDetails.getOutletId());
-			requestDlsValues.put(TCD_OUTLET_NAME, beanCouponDetails.getOutletName());
-			requestDlsValues.put(TCD_NUM_COUPONS,beanCouponDetails.getNumCoupons());
-			requestDlsValues.put(TCD_LOGO_URL, beanCouponDetails.getLogoUrl());
-			requestDlsValues.put(TCD_LATITUDE, beanCouponDetails.getLatitude());
-			requestDlsValues.put(TCD_LONGITUDE, beanCouponDetails.getLongitude());
-			requestDlsValues.put(TCD_NEIGHBOURHOOD,beanCouponDetails.getNeighbourhood());
-			
-			db.insert(TABLE_COUPON_DETAILS, null, requestDlsValues);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;
+    // Inserting Coupon details in sqlite
+    public Boolean insertCouponDetails(BeanCouponDetails beanCouponDetails) {
+	try {
+  	    SQLiteDatabase db = this.getWritableDatabase();
+	    ContentValues requestDlsValues = new ContentValues();
+	    requestDlsValues.put(TCD_OUTLET_ID, beanCouponDetails.getOutletId());
+	    requestDlsValues.put(TCD_OUTLET_NAME, beanCouponDetails.getOutletName());
+	    requestDlsValues.put(TCD_NUM_COUPONS,beanCouponDetails.getNumCoupons());
+	    requestDlsValues.put(TCD_LOGO_URL, beanCouponDetails.getLogoUrl());
+	    requestDlsValues.put(TCD_LATITUDE, beanCouponDetails.getLatitude());
+     	    requestDlsValues.put(TCD_LONGITUDE, beanCouponDetails.getLongitude());
+	    requestDlsValues.put(TCD_NEIGHBOURHOOD,beanCouponDetails.getNeighbourhood());
+	    
+	    db.insert(TABLE_COUPON_DETAILS, null, requestDlsValues);
+	} catch (Exception e) {
+	    e.printStackTrace();
+  	    return false;
 	}
+	return true;
+    }
 
-	// Fetching coupon details for sqlite
-	public ArrayList<BeanCouponDetails> GetCouponDetails() {
+    // Fetching coupon details for sqlite
+    public ArrayList<BeanCouponDetails> GetCouponDetails() {
         try {
             ArrayList<BeanCouponDetails> beanCouponDetails = new ArrayList<BeanCouponDetails>();
             SQLiteDatabase db = this.getWritableDatabase();
@@ -171,10 +171,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // ******************** Coupon Category Details Table Methods *********************
 
-	// Inserting Coupon Category details in sqlite
+    // Inserting Coupon Category details in sqlite
 
-	// Inserting Coupon details in sqlite
-	public Boolean insertCategoryCouponDetails(BeanCategoryDetails beanCategoryDetails) {
+    // Inserting Coupon details in sqlite
+    public Boolean insertCategoryCouponDetails(BeanCategoryDetails beanCategoryDetails) {
         try {
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues requestDlsValues = new ContentValues();
@@ -189,8 +189,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 		
-		// Fetching category details in sqlite
-	public HashMap<String,List<BeanCategoryDetails>> GetCategoryDetails() {
+    // Fetching category details in sqlite
+    public HashMap<String,List<BeanCategoryDetails>> GetCategoryDetails() {
         String outletID, category, selectQuery;
         try {
             HashMap<String, List<BeanCategoryDetails>> categoryMap =
