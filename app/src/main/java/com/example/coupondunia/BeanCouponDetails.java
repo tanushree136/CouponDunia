@@ -15,10 +15,10 @@ public class BeanCouponDetails {
 	 
 	public BeanCouponDetails(String outlet_id,String outlet_name, String num_coupons, String logo_url,String neighbourhood, Double latitude, Double longitude){
 	    this.outlet_id=outlet_id;
-		this.outlet_name = outlet_name;
+	    this.outlet_name = outlet_name;
 	    this.num_coupons = num_coupons;
 	    this.logo_url = logo_url;
-		this.neighbourhood = neighbourhood;
+	    this.neighbourhood = neighbourhood;
 	    this.latitude=latitude;
 	    this.longitude=longitude;
 	}
@@ -47,13 +47,13 @@ public class BeanCouponDetails {
 	    this.logo_url = logo_url;
 	}
 
-    public String getNeighbourhood() {
-        return neighbourhood;
-    }
+        public String getNeighbourhood() {
+            return neighbourhood;
+        }
 
-    public void setNeighbourhood(String neighbourhood) {
-        this.neighbourhood = neighbourhood;
-    }
+        public void setNeighbourhood(String neighbourhood) {
+            this.neighbourhood = neighbourhood;
+        }
 	
 	public String getOutletId() {
 	    return outlet_id;
@@ -72,10 +72,10 @@ public class BeanCouponDetails {
 	}
 
 	public Double getDistance() {
-		return distance;
+	    return distance;
 	}
 	public void setDistance(Double distance) {
-		this.distance = distance;
+	    this.distance = distance;
 	}
 
 	public Double getLongitude() {
