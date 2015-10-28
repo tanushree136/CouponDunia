@@ -17,27 +17,26 @@ import android.widget.TextView;
 
 public class CustomListAdapter extends ArrayAdapter<BeanCouponDetails>{
 
-	private final Activity context;
-	private final List<BeanCouponDetails> beanCouponList;
-	private final Map<String, List<BeanCategoryDetails>> category;
+    private final Activity context;
+    private final List<BeanCouponDetails> beanCouponList;
+    private final Map<String, List<BeanCategoryDetails>> category;
 
     TextView OutletName, NumCoupons, Distance, Neighbourhood;
     int numOfCoupons;
     String outletID;
+    
+    public CustomListAdapter(Activity context, List<BeanCouponDetails> beanCouponList,Map<String,List<BeanCategoryDetails>> category) {
+    	super(context, R.layout.list_item, beanCouponList);
+    	// TODO Auto-generated constructor stub
+    	this.context = context;
+    	this.beanCouponList = beanCouponList;
+    	this.category = category;
+    }
 
-	public CustomListAdapter(Activity context, List<BeanCouponDetails> beanCouponList,Map<String,List<BeanCategoryDetails>> category) {
-		super(context, R.layout.list_item, beanCouponList);
-		// TODO Auto-generated constructor stub
-		this.context = context;
-		this.beanCouponList = beanCouponList;
-		this.category = category;
-	}
-
-	public View getView(int position,View view,ViewGroup parent) {
-		LayoutInflater inflater=context.getLayoutInflater();
-		View vi=inflater.inflate(R.layout.list_item, null, true);
-
-		BeanCouponDetails beanCoupon = beanCouponList.get(position);
+    public View getView(int position,View view,ViewGroup parent) {
+    	LayoutInflater inflater=context.getLayoutInflater();
+	View vi=inflater.inflate(R.layout.list_item, null, true);
+	BeanCouponDetails beanCoupon = beanCouponList.get(position);
 
         OutletName=(TextView)vi.findViewById(R.id.outlet_name);
         OutletName.setText(beanCoupon.getOutletName());
@@ -68,5 +67,5 @@ public class CustomListAdapter extends ArrayAdapter<BeanCouponDetails>{
             recyclerView.setAdapter(mAdapter);
         }
         return vi;
-	};
+    };
 }
