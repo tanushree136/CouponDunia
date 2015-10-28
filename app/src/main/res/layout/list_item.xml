@@ -16,8 +16,8 @@
             android:id="@+id/outlet_icon"
             android:layout_width="100dp"
             android:layout_height="50dp"
-	        android:background="@drawable/imageborder"
-	        android:adjustViewBounds="true"/>
+	    android:background="@drawable/imageborder"
+	    android:adjustViewBounds="true"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
