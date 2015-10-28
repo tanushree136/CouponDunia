@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\biagarwa\CouponDunia_Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\jars\libs\internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
+        <dex dex="C:\Users\biagarwa\CouponDunia_Project\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-f6c94032598947daa9bb2f2b89984f73cfab2b83.jar" />
+    </item>
+    <item
+        jar="C:\Users\biagarwa\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.2\support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="C:\Users\biagarwa\CouponDunia_Project\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-0a92575e961adf5a94edb4c18dd06d0827025089.jar" />
+    </item>
+    <item
+        jar="C:\Users\biagarwa\CouponDunia_Project\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.2\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="C:\Users\biagarwa\CouponDunia_Project\app\build\intermediates\pre-dexed\debug\classes-7118e2a59702e464502796e214c24eaa29d9b52d.jar" />
+    </item>
+    <item
+        jar="C:\Users\biagarwa\CouponDunia_Project\app\libs\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="C:\Users\biagarwa\CouponDunia_Project\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-419e74ea06b31f5197a06deefb42db50745b95de.jar" />
+    </item>
+    <item
+        jar="C:\Users\biagarwa\CouponDunia_Project\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.2\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4796f18d3750bf2bfa078407a94a7f9db35b440d">
+        <dex dex="C:\Users\biagarwa\CouponDunia_Project\app\build\intermediates\pre-dexed\debug\classes-2b3de2ed5b1cf6f6cc3b3a7cdcbf8592ae13beb9.jar" />
+    </item>
+
+</items>
