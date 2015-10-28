@@ -9,8 +9,7 @@ public class BeanCategoryDetails {
 	}
 	
 	public BeanCategoryDetails(String category){
-	
-		this.category=category;
+	    this.category=category;
 	}
 	
 	public String getCategory() {
